@@ -1,0 +1,101 @@
+{% stylesheet %}
+  .cart-footer {
+    padding: 32px;
+    background: white;
+    border-top: 1px solid #EAE6DD;
+  }
+
+  .cart-footer__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #EAE6DD;
+  }
+
+  .cart-footer__label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: #3A3A3A;
+  }
+
+  .cart-footer__total {
+    font-size: 24px;
+    font-weight: bold;
+    color: #A3B18A;
+  }
+
+  .cart-footer__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .cart-footer__button {
+    flex: 1;
+    min-width: 150px;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cart-footer__button--checkout {
+    background: #A3B18A;
+    color: white;
+  }
+
+  .cart-footer__button--checkout:hover {
+    background: #8B9968;
+  }
+
+  .cart-footer__button--continue {
+    background: #F5F1E9;
+    color: #3A3A3A;
+    border: 1px solid #EAE6DD;
+  }
+
+  .cart-footer__button--continue:hover {
+    background: #EAE6DD;
+  }
+
+  @media (max-width: 768px) {
+    .cart-footer__buttons {
+      flex-direction: column;
+    }
+
+    .cart-footer__button {
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+<section class="cart-footer">
+  <div class="cart-footer__summary">
+    <span class="cart-footer__label">Subtotal:</span>
+    <span class="cart-footer__total">{{ cart.subtotal_price | money }}</span>
+  </div>
+
+  <div class="cart-footer__buttons">
+    <a href="/collections/all" class="cart-footer__button cart-footer__button--continue">Continue Shopping</a>
+    <form action="/cart/checkout" method="post">
+      <button type="submit" class="cart-footer__button cart-footer__button--checkout" style="width: 100%;">Proceed to Checkout</button>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cart Footer"
+    }
+  ]
+}
+{% endschema %}

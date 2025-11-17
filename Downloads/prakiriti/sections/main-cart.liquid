@@ -1,0 +1,88 @@
+{% stylesheet %}
+  .main-cart {
+    padding: 48px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .main-cart__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    margin-bottom: 32px;
+    color: #3A3A3A;
+  }
+
+  .main-cart__content {
+    background: #FCFCF9;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .cart-empty__message {
+    font-size: 18px;
+    color: #6B5E51;
+    margin-bottom: 24px;
+  }
+
+  .cart-empty__button {
+    padding: 12px 32px;
+    background: #A3B18A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+
+  .cart-empty__button:hover {
+    background: #8B9968;
+  }
+
+  @media (max-width: 768px) {
+    .main-cart {
+      padding: 32px 16px;
+    }
+
+    .main-cart__heading {
+      font-size: 24px;
+    }
+  }
+{% endstylesheet %}
+
+<section class="main-cart">
+  <h1 class="main-cart__heading">Shopping Cart</h1>
+  
+  {% if cart.item_count > 0 %}
+    <div class="main-cart__content">
+      {% for item in cart.items %}
+        <div style="padding: 16px 0; border-bottom: 1px solid #EAE6DD;">
+          <h3>{{ item.title }}</h3>
+          <p>Quantity: {{ item.quantity }} | Price: {{ item.price | money }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="cart-empty">
+      <p class="cart-empty__message">Your cart is empty</p>
+      <a href="/products" class="cart-empty__button">Continue Shopping</a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Main Cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Cart"
+    }
+  ]
+}
+{% endschema %}

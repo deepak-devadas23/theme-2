@@ -1,0 +1,119 @@
+{% stylesheet %}
+  .testimonials {
+    padding: 64px 24px;
+    background: #F5F1E9;
+    text-align: center;
+  }
+
+  .testimonials__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    margin-bottom: 48px;
+    color: #3A3A3A;
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial__card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  }
+
+  .testimonial__stars {
+    color: #FFD700;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .testimonial__text {
+    font-size: 16px;
+    color: #6B5E51;
+    margin-bottom: 16px;
+    line-height: 1.6;
+    min-height: 80px;
+  }
+
+  .testimonial__author {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #A3B18A;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 48px 24px;
+    }
+
+    .testimonials__heading {
+      font-size: 28px;
+    }
+
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+<section class="testimonials">
+  {% if section.settings.heading %}
+    <h2 class="testimonials__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="testimonials__grid">
+    {% for block in section.blocks %}
+      <div class="testimonial__card">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">"{{ block.settings.text }}"</p>
+        <p class="testimonial__author">— {{ block.settings.author }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testimonial Text",
+          "default": "This product changed my life!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Customer Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}
