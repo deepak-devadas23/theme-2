@@ -2,115 +2,11 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_save_amount": true,
-            "show_save_percentage": true
-          }
-        },
-        "rating": {
-          "type": "rating",
-          "settings": {
-            "show_review_count": true
-          }
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
-        "quantity": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_wrap": false
-          }
-        },
-        "trust_badges": {
-          "type": "trust_badges",
-          "settings": {
-            "badge_1": "Free Shipping",
-            "badge_2": "30-Day Returns",
-            "badge_3": "Secure Checkout",
-            "badge_4": "Natural Materials"
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "heading": "Description"
-          }
-        },
-        "accordion_1": {
-          "type": "accordion",
-          "settings": {
-            "heading": "How to Use",
-            "content": "",
-            "icon": "directions"
-          }
-        },
-        "accordion_2": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Benefits",
-            "content": "",
-            "icon": "check"
-          }
-        },
-        "accordion_3": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Care Instructions",
-            "content": "",
-            "icon": "heart"
-          }
-        },
-        "accordion_4": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Shipping & Returns",
-            "content": "",
-            "icon": "truck"
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "title",
-        "price",
-        "rating",
-        "variant_picker",
-        "quantity",
-        "buy_buttons",
-        "trust_badges",
-        "description",
-        "accordion_1",
-        "accordion_2",
-        "accordion_3",
-        "accordion_4",
-        "share"
-      ],
       "settings": {
-        "enable_sticky_info": true,
-        "enable_video": false,
-        "enable_zoom": true,
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "show",
-        "background_color": "#FCFCF9",
+        "image_zoom": "lightbox",
+        "media_position": "left",
         "padding_top": 48,
         "padding_bottom": 48
       }
