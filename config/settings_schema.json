@@ -1,0 +1,157 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Prakriti Essentials",
+    "theme_version": "1.0.0",
+    "theme_author": "Wellness Design Studio",
+    "theme_documentation_url": "https://help.prakritiessentials.com",
+    "theme_support_email": "support@prakritiessentials.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "colors_primary",
+        "label": "Primary (Sage Green)",
+        "default": "#A3B18A"
+      },
+      {
+        "type": "color",
+        "id": "colors_secondary",
+        "label": "Secondary (Light Sage)",
+        "default": "#BFCBA8"
+      },
+      {
+        "type": "header",
+        "content": "Background Colors"
+      },
+      {
+        "type": "color",
+        "id": "colors_background",
+        "label": "Background (Off-White)",
+        "default": "#FCFCF9"
+      },
+      {
+        "type": "color",
+        "id": "colors_surface",
+        "label": "Surface (Warm Ivory)",
+        "default": "#F5F1E9"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "typography_heading_font",
+        "label": "Heading Font",
+        "default": "dm_serif_display_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "typography_body_font",
+        "label": "Body Font",
+        "default": "inter_n4"
+      },
+      {
+        "type": "range",
+        "id": "typography_body_line_height",
+        "label": "Body Line Height",
+        "min": 1.2,
+        "max": 2,
+        "step": 0.1,
+        "default": 1.6
+      }
+    ]
+  },
+  {
+    "name": "Product Cards",
+    "settings": [
+      {
+        "type": "select",
+        "id": "product_card_style",
+        "label": "Card Style",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "minimal",
+            "label": "Minimal"
+          },
+          {
+            "value": "detailed",
+            "label": "Detailed"
+          }
+        ],
+        "default": "standard"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_card_show_rating",
+        "label": "Show Product Rating",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_card_show_quick_add",
+        "label": "Enable Quick Add",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart Type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_recommendations",
+        "label": "Show Product Recommendations",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      }
+    ]
+  }
+]
