@@ -1,0 +1,11 @@
+# Shopify Theme Configuration File
+name = "Prakriti Essentials"
+description = "A modern, elegant Shopify 2.0 theme for natural wellness and comfort products"
+author = "Prakriti Essentials Co."
+license = "Proprietary"
+roles = []
+
+[settings]
+color_primary = "#A3B18A"
+color_secondary = "#BFCBA8"
+color_background = "#FCFCF9"
