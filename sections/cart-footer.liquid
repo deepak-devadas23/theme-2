@@ -91,7 +91,41 @@
 {% schema %}
 {
   "name": "Cart Footer",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F1E9"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#A3B18A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "Subtotal",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "label": "Show Dynamic Checkout",
+          "default": true
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Cart Footer"

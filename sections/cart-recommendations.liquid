@@ -92,7 +92,7 @@
   <h2 class="cart-recommendations__heading">You Might Also Like</h2>
   
   <div class="cart-recommendations__grid">
-    {% for product in collection.products | limit: 4 %}
+    {% for product in collection.products limit: 4 %}
       <div class="recommendation-card">
         {% if product.featured_image %}
           <div class="recommendation-card__image" style="background-image: url('{{ product.featured_image | image_url: width: 300 }}'); background-size: cover; background-position: center;"></div>
