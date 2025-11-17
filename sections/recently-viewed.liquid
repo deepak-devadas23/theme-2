@@ -1,0 +1,122 @@
+{% stylesheet %}
+  .recently-viewed {
+    padding: 48px 24px;
+    background: #FCFCF9;
+  }
+
+  .recently-viewed__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #3A3A3A;
+  }
+
+  .recently-viewed__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .viewed-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .viewed-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .viewed-card__image {
+    width: 100%;
+    height: 200px;
+    background: #EAE6DD;
+    object-fit: cover;
+  }
+
+  .viewed-card__content {
+    padding: 16px;
+  }
+
+  .viewed-card__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #3A3A3A;
+  }
+
+  .viewed-card__price {
+    color: #A3B18A;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .viewed-card__button {
+    width: 100%;
+    padding: 10px;
+    background: #A3B18A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+
+  .viewed-card__button:hover {
+    background: #8B9968;
+  }
+
+  @media (max-width: 768px) {
+    .recently-viewed {
+      padding: 32px 16px;
+    }
+
+    .recently-viewed__heading {
+      font-size: 22px;
+    }
+
+    .recently-viewed__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+<section class="recently-viewed">
+  <h2 class="recently-viewed__heading">Recently Viewed Products</h2>
+  
+  <div class="recently-viewed__grid">
+    {% for product in collection.products %}
+      <div class="viewed-card">
+        {% if product.featured_image %}
+          <div class="viewed-card__image" style="background-image: url('{{ product.featured_image | image_url: width: 300 }}'); background-size: cover; background-position: center;"></div>
+        {% else %}
+          <div class="viewed-card__image"></div>
+        {% endif %}
+        <div class="viewed-card__content">
+          <h3 class="viewed-card__title">{{ product.title }}</h3>
+          <div class="viewed-card__price">{{ product.price | money }}</div>
+          <a href="{{ product.url }}" class="viewed-card__button">View Details</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recently Viewed",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Recently Viewed"
+    }
+  ]
+}
+{% endschema %}

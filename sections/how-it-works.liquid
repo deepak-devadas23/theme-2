@@ -1,0 +1,116 @@
+{% stylesheet %}
+  .how-it-works {
+    padding: 64px 24px;
+    background: #FCFCF9;
+  }
+
+  .how-it-works__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #3A3A3A;
+  }
+
+  .how-it-works__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step__number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: #A3B18A;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+
+  .step__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: #3A3A3A;
+    margin-bottom: 12px;
+  }
+
+  .step__description {
+    font-size: 15px;
+    color: #6B5E51;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .how-it-works {
+      padding: 48px 24px;
+    }
+
+    .how-it-works__heading {
+      font-size: 28px;
+    }
+
+    .how-it-works__steps {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+<section class="how-it-works">
+  {% if section.settings.heading %}
+    <h2 class="how-it-works__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="how-it-works__steps">
+    {% for block in section.blocks %}
+      <div class="step">
+        <div class="step__number">{{ forloop.index }}</div>
+        <h3 class="step__title">{{ block.settings.title }}</h3>
+        <p class="step__description">{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step Description",
+          "default": "Describe this step"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}

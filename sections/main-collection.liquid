@@ -1,0 +1,112 @@
+{% stylesheet %}
+  .main-collection {
+    padding: 48px 24px;
+  }
+
+  .main-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: #FCFCF9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 280px;
+    background: #EAE6DD;
+    object-fit: cover;
+  }
+
+  .product-card__content {
+    padding: 16px;
+  }
+
+  .product-card__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #3A3A3A;
+  }
+
+  .product-card__price {
+    color: #A3B18A;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .product-card__button {
+    width: 100%;
+    padding: 12px;
+    background: #A3B18A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .product-card__button:hover {
+    background: #8B9968;
+  }
+
+  @media (max-width: 768px) {
+    .main-collection {
+      padding: 32px 16px;
+    }
+
+    .main-collection__grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card__image {
+      height: 200px;
+    }
+  }
+{% endstylesheet %}
+
+<section class="main-collection">
+  <div class="main-collection__grid">
+    {% for product in collection.products %}
+      <div class="product-card">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" class="product-card__image">
+        {% else %}
+          <div class="product-card__image"></div>
+        {% endif %}
+        <div class="product-card__content">
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          <div class="product-card__price">{{ product.price | money }}</div>
+          <a href="{{ product.url }}" class="product-card__button">View Product</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Collection"
+    }
+  ]
+}
+{% endschema %}
