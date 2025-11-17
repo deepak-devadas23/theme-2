@@ -1,0 +1,122 @@
+{% stylesheet %}
+  .cart-recommendations {
+    padding: 48px 24px;
+    background: #F5F1E9;
+  }
+
+  .cart-recommendations__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #3A3A3A;
+  }
+
+  .cart-recommendations__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .recommendation-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .recommendation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .recommendation-card__image {
+    width: 100%;
+    height: 200px;
+    background: #EAE6DD;
+    object-fit: cover;
+  }
+
+  .recommendation-card__content {
+    padding: 16px;
+  }
+
+  .recommendation-card__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #3A3A3A;
+  }
+
+  .recommendation-card__price {
+    color: #A3B18A;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .recommendation-card__button {
+    width: 100%;
+    padding: 10px;
+    background: #A3B18A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+
+  .recommendation-card__button:hover {
+    background: #8B9968;
+  }
+
+  @media (max-width: 768px) {
+    .cart-recommendations {
+      padding: 32px 16px;
+    }
+
+    .cart-recommendations__heading {
+      font-size: 22px;
+    }
+
+    .cart-recommendations__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+<section class="cart-recommendations">
+  <h2 class="cart-recommendations__heading">You Might Also Like</h2>
+  
+  <div class="cart-recommendations__grid">
+    {% for product in collection.products | limit: 4 %}
+      <div class="recommendation-card">
+        {% if product.featured_image %}
+          <div class="recommendation-card__image" style="background-image: url('{{ product.featured_image | image_url: width: 300 }}'); background-size: cover; background-position: center;"></div>
+        {% else %}
+          <div class="recommendation-card__image"></div>
+        {% endif %}
+        <div class="recommendation-card__content">
+          <h3 class="recommendation-card__title">{{ product.title }}</h3>
+          <div class="recommendation-card__price">{{ product.price | money }}</div>
+          <a href="{{ product.url }}" class="recommendation-card__button">Add to Cart</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Recommendations",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cart Recommendations"
+    }
+  ]
+}
+{% endschema %}
